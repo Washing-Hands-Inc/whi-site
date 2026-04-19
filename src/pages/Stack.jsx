@@ -38,7 +38,7 @@ const stackData = {
   'A': {
     title: 'Architectures',
     icon: <OrganicA />,
-    color: '#a3a37e', 
+    color: '#a3a37e',
     x: 30, y: 35,
     nodes: [
       { id: 'Mamba3-MIMO', x: -40, y: -60, desc: 'What it is: A State Space Model (SSM) architecture built for inference efficiency using Multi-Input Multi-Output matrix math.\n\nWhy it matters: Unlike traditional Transformers that choke on long contexts, Mamba allows us to process near-infinite streams of telemetry without memory ballooning. It is the mathematical bedrock for localized, constant-space reasoning.' },
@@ -51,7 +51,7 @@ const stackData = {
   'P': {
     title: 'Projects',
     icon: <OrganicP />,
-    color: '#d4af37', 
+    color: '#d4af37',
     x: 70, y: 30,
     nodes: [
       { id: 'OpenMOSE', x: 40, y: -70, desc: 'What it is: An open-source orchestration framework for coordinating advanced model training and reinforcement learning.\n\nWhy it matters: It acts as the tactical command center for our deployments, allowing us to seamlessly swap out LoRA adapters and RL routines based on real-time hardware constraints without dropping the core directive.' },
@@ -64,7 +64,7 @@ const stackData = {
   'T': {
     title: 'Technologies',
     icon: <OrganicT />,
-    color: '#8fbc8f', 
+    color: '#8fbc8f',
     x: 75, y: 70,
     nodes: [
       { id: 'Cozo', x: 50, y: -50, desc: 'What it is: A transactional database that natively speaks relational, graph, and vector logic via Datalog.\n\nWhy it matters: Reality isn\'t just a list of documents; it\'s a web of connected states. Cozo allows our local nodes to instantly query complex topological relationships in true real-time without bloated middleware.' },
@@ -77,7 +77,7 @@ const stackData = {
   'E': {
     title: 'Engines',
     icon: <OrganicE />,
-    color: '#6a7fb5', 
+    color: '#6a7fb5',
     x: 25, y: 75,
     nodes: [
       { id: 'llama.cpp(-rs)', x: -40, y: -75, desc: 'What it is: A heavily optimized, bare-metal C++ engine (with Rust bindings) for running quantized models.\n\nWhy it matters: It is the absolute core of our decentralization strategy. It allows us to run GPT-4 class reasoning locally on laptops, edge servers, and embedded chips without requiring massive server farms.' },
@@ -107,20 +107,20 @@ export default function Stack() {
       <div className="noir-bg"></div>
       <div className="star-field"></div>
       <div className="stack-background-text">STACK</div>
-      
+
       <main className="container" style={{ paddingTop: '8rem', height: '100vh', position: 'relative', zIndex: 2 }}>
-        
+
         <div className="constellation-view" style={{ width: '100%', height: 'calc(100vh - 12rem)', position: 'relative' }}>
-          
+
           <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
             {Object.entries(stackData).map(([key, cat]) => (
               <React.Fragment key={`lines-${key}`}>
                 {activeCategory === key && cat.nodes.map((node) => {
-                  const nx = cat.x + (node.x / 5); 
+                  const nx = cat.x + (node.x / 5);
                   const ny = cat.y + (node.y / 5);
-                  
+
                   return (
-                    <line 
+                    <line
                       key={node.id}
                       x1={`${cat.x}%`} y1={`${cat.y}%`}
                       x2={`${nx}%`} y2={`${ny}%`}
@@ -140,7 +140,7 @@ export default function Stack() {
             return (
               <React.Fragment key={key}>
                 {/* Category Hub */}
-                <div 
+                <div
                   className={`stack-hub ${isActive ? 'active' : ''}`}
                   onClick={() => handleCategoryClick(key)}
                   style={{
@@ -153,8 +153,8 @@ export default function Stack() {
                     textAlign: 'center'
                   }}
                 >
-                  <div style={{ 
-                    width: '100px', height: '100px', 
+                  <div style={{
+                    width: '100px', height: '100px',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     background: isActive ? `${data.color}44` : 'rgba(0,0,0,0.2)',
                     border: isActive ? `1px solid ${data.color}` : '1px solid transparent',
@@ -165,9 +165,9 @@ export default function Stack() {
                   }}>
                     {data.icon}
                   </div>
-                  <span style={{ 
-                    display: 'block', marginTop: '0.8rem', 
-                    fontFamily: 'var(--font-mono)', fontSize: '1.2rem', 
+                  <span style={{
+                    display: 'block', marginTop: '0.8rem',
+                    fontFamily: 'var(--font-mono)', fontSize: '1.2rem',
                     letterSpacing: '0.2em', opacity: isActive ? 1 : 0.6,
                     fontWeight: isActive ? 'bold' : 'normal',
                     color: isActive ? '#fff' : data.color
@@ -197,7 +197,7 @@ export default function Stack() {
                       }}
                     >
                       <div style={{
-                        width: '14px', height: '14px', 
+                        width: '14px', height: '14px',
                         borderRadius: '3px',
                         transform: 'rotate(45deg)',
                         background: isNodeActive ? data.color : 'rgba(0,0,0,0.5)',
@@ -228,7 +228,7 @@ export default function Stack() {
         <div className={`stack-detail-pane ${activeNode ? 'open' : ''}`} style={{ borderLeftColor: activeNode ? stackData[activeCategory].color : 'transparent' }}>
           {activeNode && (
             <>
-              <button 
+              <button
                 onClick={() => setActiveNode(null)}
                 style={{ position: 'absolute', top: '8rem', right: '2rem', background: 'rgba(0,0,0,0.4)', border: 'none', color: '#fff', cursor: 'pointer', zIndex: 1000, padding: '0.5rem', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >

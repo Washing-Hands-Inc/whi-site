@@ -29,14 +29,14 @@ export default function Concepts() {
   return (
     <div className="theme-indigo" style={{ minHeight: '100vh', overflow: 'hidden', position: 'relative', background: 'radial-gradient(circle at 20% 30%, rgba(91, 99, 72, 0.4) 0%, rgba(30, 34, 92, 1) 100%)' }}>
       <div className="organic-bg"></div>
-      
+
       <header style={{ position: 'absolute', top: '6rem', left: '4rem', zIndex: 10 }}>
         <p className="tagline" style={{ display: 'inline-block', border: 'none', margin: 0, fontSize: '1.5rem', color: 'var(--color-drab-light)' }}>The Philosophical Topology</p>
       </header>
 
       {/* TOPOLOGY MAP */}
       <div style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh' }}>
-        
+
         {/* SVG Lines */}
         <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none', overflow: 'visible' }}>
           {connections.map(([id1, id2], i) => {
@@ -45,19 +45,19 @@ export default function Concepts() {
             const isActive = activeNode && (activeNode.id === id1 || activeNode.id === id2);
             return (
               <g key={i}>
-                <line 
-                  x1={`${n1.x}%`} y1={`${n1.y}%`} 
-                  x2={`${n2.x}%`} y2={`${n2.y}%`} 
-                  stroke={isActive ? 'var(--color-gold)' : 'var(--color-drab-green)'} 
-                  strokeWidth={isActive ? "2" : "1"} 
-                  strokeOpacity={isActive ? "0.8" : "0.3"} 
+                <line
+                  x1={`${n1.x}%`} y1={`${n1.y}%`}
+                  x2={`${n2.x}%`} y2={`${n2.y}%`}
+                  stroke={isActive ? 'var(--color-gold)' : 'var(--color-drab-green)'}
+                  strokeWidth={isActive ? "2" : "1"}
+                  strokeOpacity={isActive ? "0.8" : "0.3"}
                   style={{ transition: 'all 0.3s ease' }}
                 />
-                <line 
-                  x1={`${n1.x}%`} y1={`${n1.y}%`} 
-                  x2={`${n2.x}%`} y2={`${n2.y}%`} 
-                  stroke={isActive ? "var(--color-gold)" : "var(--color-drab-light)"} 
-                  strokeWidth={isActive ? "3" : "1"} 
+                <line
+                  x1={`${n1.x}%`} y1={`${n1.y}%`}
+                  x2={`${n2.x}%`} y2={`${n2.y}%`}
+                  stroke={isActive ? "var(--color-gold)" : "var(--color-drab-light)"}
+                  strokeWidth={isActive ? "3" : "1"}
                   strokeDasharray="4 60"
                   strokeOpacity={isActive ? "0.8" : "0.4"}
                   style={isActive ? { filter: 'drop-shadow(0 0 5px var(--color-gold))' } : {}}
@@ -73,7 +73,7 @@ export default function Concepts() {
         {conceptsList.map(c => {
           const isActive = activeNode?.id === c.id;
           return (
-            <div 
+            <div
               key={c.id}
               className={`topology-node ${isActive ? 'active' : ''}`}
               style={{ left: `${c.x}%`, top: `${c.y}%` }}
@@ -90,8 +90,8 @@ export default function Concepts() {
               <span style={{ position: 'relative', zIndex: 2, color: isActive ? '#000' : 'var(--color-drab-green)', fontWeight: 'bold', fontSize: '1.2rem' }}>
                 0{c.id}
               </span>
-              
-              <div className="node-label" style={{ 
+
+              <div className="node-label" style={{
                 position: 'absolute', top: '-35px', left: '50%', transform: 'translateX(-50%)',
                 whiteSpace: 'nowrap', color: isActive ? 'var(--color-gold)' : 'rgba(255,255,255,0.7)',
                 fontFamily: 'var(--font-mono)', fontSize: '1.4rem', pointerEvents: 'none',
@@ -108,11 +108,11 @@ export default function Concepts() {
       <div className={`concept-sidebar ${activeNode ? 'open' : ''}`}>
         {activeNode && (
           <>
-            <button 
-              onClick={() => setActiveNode(null)} 
-              style={{ 
+            <button
+              onClick={() => setActiveNode(null)}
+              style={{
                 position: 'absolute', top: '8rem', right: '2rem',
-                background: 'rgba(0,0,0,0.4)', border: 'none', 
+                background: 'rgba(0,0,0,0.4)', border: 'none',
                 color: '#fff', cursor: 'pointer', zIndex: 1000,
                 padding: '0.5rem', borderRadius: '50%',
                 display: 'flex', alignItems: 'center', justifyContent: 'center'
@@ -120,19 +120,19 @@ export default function Concepts() {
             >
               <X size={32} />
             </button>
-            
+
             <div className="sidebar-scroll-area" style={{ paddingTop: '12rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-gold-muted)', fontSize: '0.9rem' }}>
                   NODE_0{activeNode.id} // SECURE
                 </div>
               </div>
-              
+
               <h2 style={{ fontSize: '2rem', color: '#fff', marginBottom: '0.5rem', lineHeight: '1.2' }}>{activeNode.title}</h2>
               <h3 style={{ color: 'var(--color-drab-green)', fontSize: '1rem', marginBottom: '2rem', fontStyle: 'italic' }}>{activeNode.desc}</h3>
-              
+
               <div style={{ width: '100%', height: '1px', background: 'var(--color-gold)', opacity: 0.3, marginBottom: '2rem' }}></div>
-              
+
               <p style={{ color: '#ccc', lineHeight: '1.6', fontSize: '1.1rem' }}>
                 {activeNode.body}
               </p>

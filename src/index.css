@@ -89,8 +89,8 @@ body, html {
 
 /* DYNAMIC NAV THEMES */
 .navbar-stack { background: linear-gradient(to bottom, rgba(21, 21, 20, 0.9), transparent); }
-.navbar-stack .nav-brand { color: var(--color-orange); }
-.navbar-stack .nav-link:hover, .navbar-stack .nav-link.active { color: var(--color-orange); }
+.navbar-stack .nav-brand { color: var(--color-gold); }
+.navbar-stack .nav-link:hover, .navbar-stack .nav-link.active { color: var(--color-gold); }
 
 .navbar-concepts { background: linear-gradient(to bottom, rgba(13, 15, 38, 0.95), transparent); border-bottom: 1px solid var(--color-drab-green); }
 .navbar-concepts .nav-brand { color: var(--color-drab-light); }
@@ -98,7 +98,7 @@ body, html {
 .navbar-concepts .nav-link:hover, .navbar-concepts .nav-link.active { color: var(--color-drab-green); }
 
 .navbar-lichen { background: linear-gradient(to bottom, rgba(13, 15, 38, 0.95), transparent); border-bottom: 1px solid var(--color-drab-green); }
-.navbar-lichen .nav-brand { color: var(--color-drab-light); text-shadow: 2px 2px 0 var(--color-orange); }
+.navbar-lichen .nav-brand { color: var(--color-drab-light); }
 .navbar-lichen .nav-link:hover, .navbar-lichen .nav-link.active { color: var(--color-drab-light); }
 
 /* CORE PROTOCOL (HOME) */
@@ -176,13 +176,104 @@ p { font-size: 1.1rem; line-height: 1.7; color: #a0a4b8; margin-bottom: 1.5rem; 
 .credo-content .credo-final { font-size: clamp(1.5rem, 3vw, 2.5rem); color: var(--color-orange); margin-top: 3rem; font-weight: bold; }
 .credo-content .credo-signoff { font-family: var(--font-mono); color: var(--color-drab-green); font-size: 0.8rem; margin-top: 5rem; }
 
-/* THE STACK (NOIR THEME) */
-.theme-noir { min-height: 100vh; background-color: #151514; color: #c7c5b9; }
-.noir-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, #1a1a18 0%, #0a0a09 100%); z-index: -2; }
-.title-display-noir { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--color-orange); font-family: var(--font-mono); }
-.stack-modal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100; pointer-events: none; }
-.stack-modal-content { background: rgba(15, 15, 15, 0.9); border: 1px solid var(--color-orange); padding: 2rem; border-radius: 8px; width: 400px; pointer-events: auto; backdrop-filter: blur(10px); box-shadow: 0 0 50px rgba(0,0,0,0.8); animation: abrupt-pop 0.1s steps(2) forwards; }
-.stack-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--color-orange); font-size: 1.5rem; cursor: pointer; }
+.stack-background-text, .concepts-background-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 25vw;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: 1;
+  letter-spacing: -0.05em;
+  user-select: none;
+  text-transform: uppercase;
+}
+
+/* THE STACK (COSMIC CONSTELLATION) */
+.theme-noir { 
+  min-height: 100vh; 
+  background-color: #050505; 
+  color: #c7c5b9; 
+  position: relative;
+  overflow: hidden;
+}
+.noir-bg { 
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+  background: radial-gradient(circle at 50% 50%, #0d0f26 0%, #050505 100%); 
+  z-index: 0; 
+}
+.star-field {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 20% 30%, #fff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 40% 70%, #fff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 50% 20%, #fff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 80% 40%, #fff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90% 90%, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 10% 80%, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 60% 10%, #fff, rgba(0,0,0,0));
+  background-size: 200px 200px;
+  opacity: 0.1;
+  animation: cosmic-rotate 120s linear infinite;
+}
+@keyframes cosmic-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.title-display-noir { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--color-gold); font-family: var(--font-mono); }
+
+.stack-hub {
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+}
+.stack-hub:hover {
+  filter: drop-shadow(0 0 20px currentColor);
+}
+.stack-hub.active {
+  filter: drop-shadow(0 0 30px currentColor);
+}
+
+.stack-node-constellation {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.stack-node-constellation:hover {
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.stack-detail-pane {
+  position: fixed;
+  right: 0; top: 0; width: 450px; max-width: 100vw; height: 100vh;
+  background: rgba(7, 8, 20, 0.65);
+  backdrop-filter: blur(2px);
+  border-left: 1px solid var(--color-gold);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 100;
+  padding: 0;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
+.stack-detail-pane.open {
+  transform: translateX(0);
+}
+.sidebar-scroll-area {
+  width: 100%; height: 100%;
+  padding: 6rem 3rem 3rem 3rem;
+  overflow-y: auto;
+}
+
+.constellation-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-line 1.5s ease-out forwards;
+}
+@keyframes draw-line {
+  to { stroke-dashoffset: 0; }
+}
 
 /* CONCEPTS HUB (ACCORDION) */
 .accordion-container {
@@ -302,9 +393,8 @@ p { font-size: 1.1rem; line-height: 1.7; color: #a0a4b8; margin-bottom: 1.5rem; 
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 100;
-  padding: 6rem 3rem 3rem 3rem;
+  padding: 0;
   box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-  overflow-y: auto;
 }
 .concept-sidebar.open {
   transform: translateX(0);

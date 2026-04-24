@@ -429,7 +429,7 @@ p { font-size: 1.1rem; line-height: 1.7; color: #a0a4b8; margin-bottom: 1.5rem; 
 }
 
 .brutalist-grid {
-  display: grid; grid-template-columns: 2fr 1fr; gap: 4rem;
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem;
 }
 
 .brutalist-content h2 {

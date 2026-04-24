@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Terminal, Database, Brain, Sprout, Factory, Mail } from 'lucide-react';
+import { Terminal, Database, Brain, Sprout, Factory, Mail, Gavel } from 'lucide-react';
 
 export default function NavBar() {
   const location = useLocation();
@@ -41,8 +41,11 @@ export default function NavBar() {
           </NavLink>
 
           <NavLink to="/flint" className={({isActive}) => isActive || location.pathname.includes('/flint') ? 'nav-link active' : 'nav-link'}>
-            <Factory size={14} /> The Strong
+            <Factory size={14} /> Flint Strong
           </NavLink>
+          <a href="https://tort.washinghandsinc.com" className="nav-link" target="_blank" rel="noopener noreferrer">
+            <Gavel size={14} /> Tort
+          </a>
         </div>
       </div>
     </nav>

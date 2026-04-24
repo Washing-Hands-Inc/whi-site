@@ -133,9 +133,12 @@ export default function Home() {
         <footer style={{ padding: '4rem 0', textAlign: 'center', borderTop: '1px solid rgba(116, 125, 94, 0.2)' }}>
           <img src="/whi_logo_notext.png" alt="WHI" style={{ width: '40px', opacity: 0.5, marginBottom: '1rem' }} />
           <p style={{ fontSize: '0.9rem', opacity: 0.6 }}>© {new Date().getFullYear()} Washing Hands Inc. All systems functional.</p>
-          <p style={{ marginTop: '1rem' }}>
+          <p style={{ marginTop: '1rem', display: 'flex', gap: '2rem', justifyContent: 'center' }}>
             <a href="mailto:the@washinghandsinc.com" style={{ color: 'var(--color-drab-light)', textDecoration: 'none', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>
               the@washinghandsinc.com
+            </a>
+            <a href="https://tort.washinghandsinc.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-drab-light)', textDecoration: 'none', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>
+              Tort
             </a>
           </p>
         </footer>
